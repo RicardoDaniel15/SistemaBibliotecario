@@ -13,6 +13,7 @@ public class Main {
     public static void main(String[] args) {
 
         boolean bandera = true;
+        Biblioteca biblioteca = new Biblioteca();
 
         while (bandera==true){
 
@@ -22,17 +23,41 @@ public class Main {
 
             Scanner sc = new Scanner(System.in);
             int llave = sc.nextInt();
+            sc.nextLine();
 
             switch (llave){
                 case 1:
-                    
+                System.out.println();
+                System.out.println("************************************************");
+                System.out.print("Ingrese el título: ");
+                    String titulo = sc.nextLine();
+                    System.out.print("Ingrese el autor: ");
+                    String author = sc.nextLine();
+                    System.out.print("Ingrese el ISBN: ");
+                    String cod = sc.nextLine();
+                System.out.println("************************************************");
 
+                biblioteca.agregarLibro(new Libro(titulo, author, cod));
                     break;
                 case 2:
+                System.out.println();
+                System.out.println("************************************************");
 
+                System.out.print("Ingrese el titulo del libro: ");
+                String nombreLibro = sc.nextLine();
+                Libro libroEncontrado = biblioteca.buscarLibro(nombreLibro);
+                if(libroEncontrado!=null){
+                    System.out.println("Libro encontrado!!");
+                    System.out.println(libroEncontrado.toString());
+                }else{
+                    System.out.println("El libro no se encuentra en la biblioteca!!");
+                }
                     break;
                 case 3:
-
+                System.out.println("");
+                System.out.println("************************************************");
+                biblioteca.listarLibros();
+                System.out.println("************************************************");
                     break;
                 case 4:
                     System.out.println("!!Gracias por preferir nuestro sistema!!");
